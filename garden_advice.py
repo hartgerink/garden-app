@@ -1,38 +1,31 @@
-# Ask the user for the season and plant type.
-# strip() and lower() let "Summer " match "summer".
-season = input("Enter the season (summer or winter): ").strip().lower()
-plant_type = (
-    input("Enter the plant type (flower or vegetable): ").strip().lower()
-)
+# Gardening advice for each season
+season_advice = {
+    "spring": "Plant seeds and seedlings once the risk of frost has passed.",
+    "summer": "Water your plants regularly and provide some shade.",
+    "autumn": "Clear fallen leaves and plant bulbs for next spring.",
+    "winter": "Protect your plants from frost with covers.",
+}
 
-# Variable to hold gardening advice
-advice = ""
+# Gardening advice for each type of plant
+plant_advice = {
+    "flower": "Use fertiliser to encourage blooms.",
+    "vegetable": "Keep an eye out for pests!",
+    "herb": "Pick leaves often to encourage new growth.",
+}
 
-# Determine advice based on the season
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
-else:
-    advice += "No advice for this season.\n"
+# Ask the user for the season and plant type, listing the choices
+# from the dictionary keys. strip() and lower() let "Summer " match
+# "summer".
+season_choices = ", ".join(season_advice)
+plant_choices = ", ".join(plant_advice)
+season = input(f"Enter the season ({season_choices}): ").strip().lower()
+plant_type = input(f"Enter the plant type ({plant_choices}): ").strip().lower()
 
-# Determine advice based on the plant type
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
-else:
-    advice += "No advice for this type of plant."
+# Look up the advice, falling back to a default message when the
+# season or plant type is not in its dictionary
+advice = season_advice.get(season, "No advice for this season.")
+advice += "\n"
+advice += plant_advice.get(plant_type, "No advice for this type of plant.")
 
 # Print the generated advice
 print(advice)
-
-# TODO: Examples of possible features to add:
-
-# - Add detailed comments explaining each block of code.
-
-# - Refactor the code into functions for better readability and
-#   modularity.
-
-# - Store advice in a dictionary for multiple plants and seasons and
-#   recommend plants based on the entered season.
