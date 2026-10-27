@@ -172,9 +172,13 @@ pass, using issue #1 as the example. Issue #2 followed the same steps.
    gh pr merge 3 --merge
    ```
 
+   `--merge` keeps the branch's commits and adds a merge commit to
+   `main`. Without it, `gh` stops to ask which merge method to use.
+
 7. **Close the issue.** Because of `closes #1` and `Fixes #1`, GitHub
-   closes issue #1 automatically when the pull request is merged. Check
-   that it did:
+   closes issue #1 automatically when the pull request is merged (see
+   [Closing issues automatically](#closing-issues-automatically)).
+   Check that it did:
 
    ```bash
    gh issue view 1
@@ -211,6 +215,40 @@ pass, using issue #1 as the example. Issue #2 followed the same steps.
 
    `-d` only deletes a branch whose work has been merged, so nothing is
    lost. Your local repo now matches GitHub, ready for the next issue.
+
+## Closing issues automatically
+
+GitHub can close an issue for you when the work that fixes it is
+merged. To make this happen, write a keyword followed by the issue
+number:
+
+- in the pull request description, or
+- in a commit message that is part of the pull request.
+
+The keywords are `close`, `closes`, `closed`, `fix`, `fixes`, `fixed`,
+`resolve`, `resolves`, and `resolved`. Capital letters do not matter.
+
+The workflow above uses both: `closes #1` in the commit message in
+step 4, and `Fixes #1` in the pull request description in step 5.
+
+What happens:
+
+- When the pull request is opened, GitHub links it to the issue.
+- Nothing closes yet. The issue stays open while the pull request is
+  being reviewed.
+- When the pull request is merged into `main`, GitHub closes the issue
+  and records which pull request closed it.
+
+Things to watch for:
+
+- A plain mention such as `#1` or `see #1` only links the issue. It
+  does not close it.
+- Each issue needs its own keyword. To close two issues, write
+  `Fixes #1, fixes #2`, not `Fixes #1, #2`.
+- Issues only close when the pull request is merged into the repo's
+  default branch (here, `main`).
+- If you forget the keyword, close the issue yourself with
+  `gh issue close 1`.
 
 ## Helpful commands
 
