@@ -9,6 +9,15 @@ program that asks for a season and a type of plant, then prints
 gardening advice. Its only job is to give the workflow something real
 to change.
 
+## Contents
+
+- [How the code changed](#how-the-code-changed)
+- [The tools](#the-tools)
+- [Creating the public repo](#creating-the-public-repo)
+- [The workflow](#the-workflow)
+- [Closing issues automatically](#closing-issues-automatically)
+- [Helpful commands](#helpful-commands)
+
 ## How the code changed
 
 `garden_advice.py` went through three versions. Each row below is one
@@ -89,14 +98,26 @@ The repo starts on your computer and is then published to GitHub.
 
 Every change goes through the same cycle:
 
-1. **Create an issue** describing the change. GitHub gives it a number,
+1. [Create an issue](#step-1)
+2. [Create a branch](#step-2)
+3. [Implement the change](#step-3)
+4. [Commit and push your changes to GitHub](#step-4)
+5. [Open a pull request](#step-5)
+6. [Review and merge the pull request](#step-6)
+7. [Close the issue](#step-7)
+8. [Delete the branch](#step-8)
+9. [Update your local repo](#step-9)
+
+Each step in detail:
+
+1. <a id="step-1"></a>**Create an issue** describing the change. GitHub gives it a number,
    here #1.
 
    ```bash
    gh issue create --title "Replace hardcoded season and plant type with user input" --body "Replace the hardcoded season and plant_type values with input()."
    ```
 
-2. **Create a branch** for the issue. Start from an up-to-date `main`,
+2. <a id="step-2"></a>**Create a branch** for the issue. Start from an up-to-date `main`,
    so the branch includes everything merged so far:
 
    ```bash
@@ -111,7 +132,7 @@ Every change goes through the same cycle:
    git checkout -b feature/user-input
    ```
 
-3. **Implement the change** in `garden_advice.py` on the new branch.
+3. <a id="step-3"></a>**Implement the change** in `garden_advice.py` on the new branch.
    Then compare your edited file with the last committed version, to
    see exactly what you changed:
 
@@ -122,7 +143,7 @@ Every change goes through the same cycle:
    Lines starting with `-` were removed, and lines starting with `+`
    were added.
 
-4. **Commit and push your changes to GitHub.** Putting `closes #1` in
+4. <a id="step-4"></a>**Commit and push your changes to GitHub.** Putting `closes #1` in
    the commit message links the commit to the issue:
 
    ```bash
@@ -137,7 +158,7 @@ Every change goes through the same cycle:
    git push origin feature/user-input
    ```
 
-5. **Open a pull request** from the branch into `main`. `Fixes #1` in
+5. <a id="step-5"></a>**Open a pull request** from the branch into `main`. `Fixes #1` in
    the description tells GitHub which issue the pull request resolves.
    GitHub gives the pull request the next free number, here #3.
 
@@ -151,7 +172,7 @@ Every change goes through the same cycle:
    https://github.com/hartgerink/garden-app/pull/3
    ```
 
-6. **Review and merge the pull request.** The commands below use `3`,
+6. <a id="step-6"></a>**Review and merge the pull request.** The commands below use `3`,
    the pull request number printed in step 5. Look over the changes
    first:
 
@@ -168,7 +189,7 @@ Every change goes through the same cycle:
    `--merge` keeps the branch's commits and adds a merge commit to
    `main`. Without it, `gh` stops to ask which merge method to use.
 
-7. **Close the issue.** Because of `closes #1` and `Fixes #1`, GitHub
+7. <a id="step-7"></a>**Close the issue.** Because of `closes #1` and `Fixes #1`, GitHub
    closes issue #1 automatically when the pull request is merged (see
    [Closing issues automatically](#closing-issues-automatically)).
    Check that it did:
@@ -183,13 +204,13 @@ Every change goes through the same cycle:
    gh issue close 1
    ```
 
-8. **Delete the branch** on GitHub, now that its work is in `main`:
+8. <a id="step-8"></a>**Delete the branch** on GitHub, now that its work is in `main`:
 
    ```bash
    git push origin --delete feature/user-input
    ```
 
-9. **Update your local repo.** The merge happened on GitHub, so your
+9. <a id="step-9"></a>**Update your local repo.** The merge happened on GitHub, so your
    computer's `main` does not have it yet. Switch to `main` and pull:
 
    ```bash
