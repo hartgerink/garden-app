@@ -11,20 +11,14 @@ to change.
 
 ## How the code changed
 
-Follow these links in order to see the file before, between, and after
-the two issues.
+`garden_advice.py` went through three versions. Each row below is one
+version.
 
-1. **Starting point:** [`garden_advice.py` as first committed](https://github.com/hartgerink/garden-app/blob/88648b9988da868dafe53dbdc5c64660386a93b0/garden_advice.py),
-   before any changes. The season and plant type are hardcoded.
-2. **Issue #1 (closed):** [Replace hardcoded season and plant type with user input](https://github.com/hartgerink/garden-app/issues/1),
-   resolved by [pull request #3](https://github.com/hartgerink/garden-app/pull/3).
-   Its Files changed tab shows exactly what changed.
-3. **After issue #1:** [`garden_advice.py` after issue #1 was merged](https://github.com/hartgerink/garden-app/blob/d0ce5a3c648ba5b5b07f573981a16cb110c7c615/garden_advice.py).
-   The program now asks the user for both values.
-4. **Issue #2 (closed):** [Store advice in dictionaries](https://github.com/hartgerink/garden-app/issues/2),
-   resolved by [pull request #4](https://github.com/hartgerink/garden-app/pull/4).
-5. **Final version:** [`garden_advice.py` as it stands now](https://github.com/hartgerink/garden-app/blob/main/garden_advice.py).
-   The advice is stored in dictionaries instead of `if`/`elif` chains.
+| Version | Code | Issue | Changes |
+|---------|:----:|:-----:|:-------:|
+| **1. Original**<br>Season and plant type are hardcoded | [View file](https://github.com/hartgerink/garden-app/blob/88648b9988da868dafe53dbdc5c64660386a93b0/garden_advice.py) | - | - |
+| **2. User input**<br>Asks the user for both values | [View file](https://github.com/hartgerink/garden-app/blob/d0ce5a3c648ba5b5b07f573981a16cb110c7c615/garden_advice.py) | [Issue #1](https://github.com/hartgerink/garden-app/issues/1) | [PR #3 diff](https://github.com/hartgerink/garden-app/pull/3/files) |
+| **3. Dictionaries** (current)<br>Advice is stored in dictionaries | [View file](https://github.com/hartgerink/garden-app/blob/main/garden_advice.py) | [Issue #2](https://github.com/hartgerink/garden-app/issues/2) | [PR #4 diff](https://github.com/hartgerink/garden-app/pull/4/files) |
 
 ## The tools
 
@@ -93,8 +87,7 @@ The repo starts on your computer and is then published to GitHub.
 
 ## The workflow
 
-Every change goes through the same cycle. This walks through one full
-pass, using issue #1 as the example. Issue #2 followed the same steps.
+Every change goes through the same cycle:
 
 1. **Create an issue** describing the change. GitHub gives it a number,
    here #1.
